@@ -32,7 +32,7 @@ import logging
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from django.db import transaction
-from django.utils import six
+import six
 
 from . import humanize, signals
 from .models import (Charge, Organization, Plan, Subscription, Transaction,

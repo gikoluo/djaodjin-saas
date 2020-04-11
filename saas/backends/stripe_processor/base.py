@@ -67,7 +67,7 @@ from hashlib import sha512
 from base64 import b64encode
 
 from django.db import transaction
-from django.utils import six
+import six
 from django.utils.translation import ugettext_lazy as _
 import requests, stripe
 

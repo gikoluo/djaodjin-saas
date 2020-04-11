@@ -32,7 +32,7 @@ from django import template
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import stringfilter
 from django.utils.safestring import mark_safe
-from django.utils import six
+import six
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _
 

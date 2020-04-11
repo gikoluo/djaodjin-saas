@@ -29,7 +29,7 @@ from dateutil.relativedelta import relativedelta
 from django.db import router
 from django.db.models import Count, Sum
 from django.db.models.sql.query import RawQuery
-from django.utils import six
+import six
 
 from ..models import Plan, Subscription, Transaction
 from ..utils import datetime_or_now, parse_tz, convert_dates_to_utc

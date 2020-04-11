@@ -49,7 +49,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (DetailView, FormView, ListView, TemplateView,
     UpdateView)
 from django.utils.http import urlencode
-from django.utils import six
+import six
 
 from .. import settings
 from ..compat import is_authenticated, reverse

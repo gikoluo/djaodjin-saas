@@ -28,7 +28,7 @@ from functools import reduce
 
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
-from django.utils import six
+import six
 from django.utils.encoding import force_text
 from django.utils.timezone import utc
 from rest_framework.compat import coreapi, coreschema

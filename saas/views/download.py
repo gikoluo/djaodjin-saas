@@ -33,7 +33,7 @@ from decimal import Decimal
 from io import BytesIO, StringIO
 
 from django.http import HttpResponse
-from django.utils import six
+import six
 from django.views.generic import View
 from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request

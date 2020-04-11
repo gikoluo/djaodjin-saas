@@ -46,7 +46,7 @@ from ..utils import (full_name_natural_split, get_organization_model,
     get_role_model, handle_uniq_error, get_picture_storage)
 
 #pylint:disable=no-name-in-module,import-error
-from django.utils.six.moves.urllib.parse import urlparse, urlunparse
+from six.moves.urllib.parse import urlparse, urlunparse
 
 
 #pylint: disable=no-init

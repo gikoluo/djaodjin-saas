@@ -24,7 +24,7 @@
 
 import datetime, logging
 
-from django.utils import six
+import six
 
 from ..utils import datetime_or_now, generate_random_slug
 from .. import settings

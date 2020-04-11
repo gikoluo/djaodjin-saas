@@ -30,7 +30,7 @@ from django.conf import settings as django_settings
 from django.db import transaction, IntegrityError
 from django.http.request import split_domain_port, validate_host
 from django.template.defaultfilters import slugify
-from django.utils import six
+import six
 from django.utils.dateparse import parse_datetime
 from django.utils.timezone import utc, get_current_timezone
 from django.utils.translation import ugettext_lazy as _

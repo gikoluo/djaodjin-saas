@@ -40,7 +40,7 @@ from django.core import validators
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import is_password_usable
 from django.template.defaultfilters import slugify
-from django.utils import six
+import six
 from django.utils.translation import ugettext_lazy as _
 from django.urls.exceptions import NoReverseMatch
 from rest_framework import serializers

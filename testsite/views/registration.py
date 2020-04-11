@@ -35,7 +35,7 @@ from saas.models import Signature
 from saas.utils import get_organization_model
 
 #pylint:disable=no-name-in-module,import-error
-from django.utils.six.moves.urllib.parse import urlparse
+from six.moves.urllib.parse import urlparse
 
 
 class PersonalRegistrationForm(forms.Form):

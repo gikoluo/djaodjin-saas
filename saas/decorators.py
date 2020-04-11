@@ -33,13 +33,12 @@ from __future__ import unicode_literals
 
 import logging
 
-from functools import wraps
+from functools import WRAPPER_ASSIGNMENTS, wraps
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
 from django.shortcuts import get_object_or_404
-from django.utils.decorators import available_attrs
-from django.utils import six
+import six
 from django.utils.translation import ugettext_lazy as _
 
 from . import settings
@@ -565,7 +564,7 @@ def requires_authenticated(function=None,
     instead when Content-Type is showing we are dealing with an API request.
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             redirect_url = fail_authenticated(request)
             if redirect_url:
@@ -588,7 +587,7 @@ def requires_agreement(function=None,
     if necessary.
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             redirect_url = fail_agreement(request, agreement=agreement)
             if redirect_url:
@@ -616,7 +615,7 @@ def requires_subscription(function=None,
     - Checkout page when there never was a subscription (to plan).
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             organization_model = get_organization_model()
             subscriber = get_object_or_404(organization_model,
@@ -655,7 +654,7 @@ def requires_paid_subscription(function=None,
     - Waiting page when ``charge.status`` is ``in-progress``.
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             organization_model = get_organization_model()
             subscriber = get_object_or_404(organization_model,
@@ -691,7 +690,7 @@ def requires_direct(function=None, roledescription=None,
     .. image:: perms-contrib.*
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             slug = kwargs.get('charge', kwargs.get('organization', None))
             redirect_url = fail_direct(request, organization=slug,
@@ -720,7 +719,7 @@ def requires_direct_weak(function=None, roledescription=None,
     (GET, POST, etc.).
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             slug = kwargs.get('charge', kwargs.get('organization', None))
             redirect_url = fail_direct_weak(request, organization=slug,
@@ -753,7 +752,7 @@ def requires_provider(function=None, roledescription=None,
     .. image:: perms-contrib-subscribes.*
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             charge = kwargs.get('charge', None)
             if charge is not None:
@@ -790,7 +789,7 @@ def requires_provider_weak(function=None, roledescription=None,
     (GET, POST, etc.).
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             charge = kwargs.get('charge', None)
             if charge is not None:
@@ -827,7 +826,7 @@ def requires_provider_only(function=None, roledescription=None,
     .. image:: perms-contrib-provider-only.*
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             charge = kwargs.get('charge', None)
             if charge is not None:
@@ -861,7 +860,7 @@ def requires_provider_only_weak(function=None, roledescription=None,
     (GET, POST, etc.).
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             charge = kwargs.get('charge', None)
             if charge is not None:
@@ -902,7 +901,7 @@ def requires_self_provider(function=None, roledescription=None,
     .. image:: perms-self-contrib-subscribes.*
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             redirect_url = fail_self_provider(request,
                 user=kwargs.get('user', None), roledescription=roledescription)
@@ -937,7 +936,7 @@ def requires_self_provider_weak(function=None, roledescription=None,
     (GET, POST, etc.).
     """
     def decorator(view_func):
-        @wraps(view_func, assigned=available_attrs(view_func))
+        @wraps(view_func, assigned=WRAPPER_ASSIGNMENTS)
         def _wrapped_view(request, *args, **kwargs):
             redirect_url = fail_self_provider_weak(request,
                 user=kwargs.get('user', None), roledescription=roledescription)

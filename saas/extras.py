@@ -27,7 +27,7 @@ from collections import OrderedDict
 
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from django.utils import six
+import six
 from django.utils.translation import ugettext_lazy as _
 
 # Implementation Note:

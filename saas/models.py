@@ -72,10 +72,10 @@ from django.db.models.query import QuerySet
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.http import quote
 from django.utils.safestring import mark_safe
-from django.utils import six
+import six
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
 from rest_framework.exceptions import ValidationError
